@@ -1,0 +1,65 @@
+﻿@using Agency.Core.Models;
+@model List<Portfolio>
+
+@{
+    int count = 0;
+}
+
+
+<div container>
+
+
+    <h1>
+        Portfolios
+
+        <a class=" btn btn-primary" asp-action="Create" asp-controller="Portfolio"> Create</a>
+    </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Desc</th>
+               
+                <th scope="col">ImgUrl</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    
+                    <td>
+                        <div style=" width:100px">
+
+                            <img width="100%" src="~/Upload/Service/@item.ImgUrl" />
+                        </div>
+                    <td>
+
+                        <a class=" btn btn-danger" asp-action="Delete" asp-controller="Portfolio" asp-route-id="@item.Id"> Delete</a>
+                        <a class="btn btn-secondary" asp-action="Update" asp-controller="Portfolio" asp-route-id="@item.Id"> Update </a>
+
+                    </td>
+
+                    </td>
+
+                </tr>
+
+
+            }
+
+
+
+        </tbody>
+    </table>
+
+
+
+</div>
